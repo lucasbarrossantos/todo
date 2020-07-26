@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:todo_everis/model/todo.dart';
 import 'package:todo_everis/service/todo_service.dart';
+import 'package:provider/provider.dart';
 
 class ModalAddOrEdit {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  TodoService todoService = TodoService();
   Todo _todo = Todo();
 
   void addOrEditItem({BuildContext context, Todo todo}) {
+    final _todoService = Provider.of<TodoService>(context, listen: false);
+
     showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -69,7 +71,7 @@ class ModalAddOrEdit {
               onPressed: () async {
                 if (formKey.currentState.validate()) {
                   formKey.currentState.save();
-                  todoService.add(_todo).then((_)=>Navigator.of(context).pop());
+                  _todoService.add(_todo).then((_) => Navigator.of(context).pop());
                 }
               },
             ),

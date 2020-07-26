@@ -3,17 +3,16 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:todo_everis/model/todo.dart';
 import 'package:todo_everis/screens/home/components/item_tile.dart';
 import 'package:todo_everis/screens/home/components/modal_add_or_edit.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_everis/service/todo_service.dart';
 
 class HomeScreen extends StatelessWidget {
-  //final ModalAddOrEdit modalAddOrEdit = ModalAddOrEdit();
-  final _todoService = TodoService();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  Todo _todo = Todo();
-  Todo todo = Todo();
+  final ModalAddOrEdit modalAddOrEdit = ModalAddOrEdit();
 
   @override
   Widget build(BuildContext context) {
+    final _todoService = Provider.of<TodoService>(context, listen: false);
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('Todo'),
@@ -21,75 +20,7 @@ class HomeScreen extends StatelessWidget {
           actions: <Widget>[
             FlatButton(
               onPressed: () {
-                showDialog<void>(
-                  context: context,
-                  barrierDismissible: false, // user must tap button!
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Nova tarefa'),
-                      content: SingleChildScrollView(
-                        child: Form(
-                          key: formKey,
-                          child: ListBody(
-                            children: <Widget>[
-                              TextFormField(
-                                validator: (name) {
-                                  if (name.length < 5) {
-                                    return 'Título muito curto';
-                                  }
-                                  return null;
-                                },
-                                initialValue: todo.title,
-                                decoration: const InputDecoration(
-                                  hintText: 'Título da tarefa',
-                                ),
-                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                                onSaved: (title) {
-                                  _todo.title = title;
-                                },
-                              ),
-                              TextFormField(
-                                maxLines: 4,
-                                validator: (name) {
-                                  if (name.length < 6) {
-                                    return 'Descrição muito curta';
-                                  }
-                                  return null;
-                                },
-                                initialValue: todo.description,
-                                decoration: const InputDecoration(
-                                  hintText: 'Descrição da tarefa',
-                                ),
-                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                                onSaved: (description) {
-                                  _todo.description = description;
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      actions: <Widget>[
-                        FlatButton(
-                          child: Text('Cancelar'),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          textColor: Colors.grey[700],
-                        ),
-                        FlatButton(
-                          child: Text('Salvar'),
-                          onPressed: () async {
-                            if (formKey.currentState.validate()) {
-                              formKey.currentState.save();
-                              _todoService.add(_todo).then((_)=>Navigator.of(context).pop());
-                            }
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                );
+                modalAddOrEdit.addOrEditItem(context: context, todo: Todo());
               },
               child: Icon(Icons.add, size: 22, color: Colors.white),
             )

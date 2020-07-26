@@ -34,7 +34,7 @@ mixin _$TodoService on _TodoService, Store {
   final _$addAsyncAction = AsyncAction('_TodoService.add');
 
   @override
-  Future add(Todo todo) {
+  Future<void> add(Todo todo) {
     return _$addAsyncAction.run(() => super.add(todo));
   }
 

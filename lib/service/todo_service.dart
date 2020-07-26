@@ -26,10 +26,10 @@ abstract class _TodoService with Store {
   }
 
   @action
-  add(Todo todo) async {
+  Future<void> add(Todo todo) async {
     todo.createdAt = DateTime.now().toIso8601String();
     todo = await _todoRepository.add(todo);
-    items.add(todo);
+    items = List.from(items..add(todo));
     print(items.length);
   }
 
