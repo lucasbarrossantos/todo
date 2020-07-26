@@ -28,8 +28,6 @@ class HomeScreen extends StatelessWidget {
         ),
         body: Observer(
           builder: (_) {
-            //List<Todo> items = ;
-            debugPrint('chamou o consumer!!');
             return ListView.builder(
               itemCount: _todoService.items.length,
               itemBuilder: (_, index) => ItemTile(_todoService.items[index]));

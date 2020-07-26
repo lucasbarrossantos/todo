@@ -22,7 +22,6 @@ abstract class _TodoService with Store {
   Future<void> findAll() async {
     items.clear();
     items = await _todoRepository.findAll();
-    debugPrint('Items Qtd: ${items.length}');
   }
 
   @action
@@ -30,7 +29,6 @@ abstract class _TodoService with Store {
     todo.createdAt = DateTime.now().toIso8601String();
     todo = await _todoRepository.add(todo);
     items = List.from(items..add(todo));
-    print(items.length);
   }
 
 }
