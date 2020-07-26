@@ -1,4 +1,4 @@
-# todo_everis
+# todo
 
 TodoList de exemplo
 
