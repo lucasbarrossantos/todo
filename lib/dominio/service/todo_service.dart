@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'package:todo_everis/repository/todo_repository.dart';
-import 'package:todo_everis/model/todo.dart';
+import 'package:todo_everis/dominio/model/todo.dart';
+import 'package:todo_everis/dominio/repository/todo_repository.dart';
 
 part 'todo_service.g.dart';
 

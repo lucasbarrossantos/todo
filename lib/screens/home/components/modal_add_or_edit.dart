@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:todo_everis/model/todo.dart';
-import 'package:todo_everis/service/todo_service.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_everis/dominio/model/todo.dart';
+import 'package:todo_everis/dominio/service/todo_service.dart';
 
 class ModalAddOrEdit {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();

@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:todo_everis/model/todo.dart';
+import 'package:todo_everis/dominio/model/todo.dart';
 
 class Api {
-  final String _url = "https://5ec6e8bf5961a20016a9eba4.mockapi.io/api/v1";
+  final String _url = "https://5ec6e8bf5961a20016a9eba4.mockapi.io/dominio.api/v1";
   final Dio dio = Dio();
 
   Future<List<Todo>> findAll() async {

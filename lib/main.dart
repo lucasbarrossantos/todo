@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_everis/dominio/service/todo_service.dart';
 import 'package:todo_everis/screens/home/home_screen.dart';
-import 'package:todo_everis/service/todo_service.dart';
 
 void main() {
   runApp(TodoMain());

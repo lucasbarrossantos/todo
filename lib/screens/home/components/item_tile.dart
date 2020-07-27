@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_everis/model/todo.dart';
+import 'package:todo_everis/dominio/model/todo.dart';
 import 'package:todo_everis/screens/home/components/modal_add_or_edit.dart';
 
 class ItemTile extends StatelessWidget {
