@@ -10,13 +10,9 @@ void main() {
 class TodoMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        Provider<TodoService>(
-          create: (_) => TodoService(),
-          lazy: false,
-        )
-      ],
+    return Provider<TodoService>(
+      create: (_) => TodoService(),
+      lazy: false,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'TodoList',
