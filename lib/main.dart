@@ -13,7 +13,8 @@ class TodoMain extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<TodoService>(
-          create: (_) => TodoService()
+          create: (_) => TodoService(),
+          lazy: false,
         )
       ],
       child: MaterialApp(

@@ -12,7 +12,6 @@ class ItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-
         modalAddOrEdit.addOrEditItem(context: context, todo: todo);
       },
       child: Card(

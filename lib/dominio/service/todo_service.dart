@@ -7,7 +7,6 @@ part 'todo_service.g.dart';
 class TodoService = _TodoService with _$TodoService;
 
 abstract class _TodoService with Store {
-
   final TodoRepository _todoRepository = TodoRepository();
 
   @observable
@@ -24,17 +23,36 @@ abstract class _TodoService with Store {
   Future<void> findAll() async {
     items.clear();
     items = await _todoRepository.findAll();
+    items.sort((a, b) => a.id.compareTo(b.id));
   }
 
   @action
-  Future<void> add(Todo todo) async {
+  Future<void> addOrUpdate(Todo todo) async {
+    if (todo.id == null) {
+      await _add(todo);
+    } else {
+      _update(todo);
+    }
+  }
+
+  Future _add(Todo todo) async {
     todo.createdAt = DateTime.now().toIso8601String();
     todo = await _todoRepository.add(todo);
     items = List.from(items..add(todo));
+    items.sort((a, b) => a.id.compareTo(b.id));
+    setEditing();
+  }
+
+  @action
+  Future<void> _update(Todo todo) async {
+    todo.createdAt = DateTime.now().toIso8601String();
+    todo = await _todoRepository.update(todo);
+    items.removeWhere((item) => item.id == todo.id);
+    items = List.from(items..add(todo));
+    items.sort((a, b) => a.id.compareTo(b.id));
     setEditing();
   }
 
   @action
   void setEditing() => isEditing = !isEditing;
-
 }

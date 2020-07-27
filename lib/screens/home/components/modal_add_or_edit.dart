@@ -13,9 +13,8 @@ class ModalAddOrEdit {
 
     showDialog<void>(
       context: context,
-      barrierDismissible: false, // user must tap button!
+      barrierDismissible: false,
       builder: (BuildContext context) {
-        print(_todoService.isEditing);
         return AlertDialog(
           title: Text('Nova tarefa'),
           content: SingleChildScrollView(
@@ -80,9 +79,9 @@ class ModalAddOrEdit {
                         if (formKey.currentState.validate()) {
                           _todoService.setEditing();
                           formKey.currentState.save();
-                          await Future.delayed(Duration(seconds: 3));
+                          _todo.id = todo.id;
                           _todoService
-                              .add(_todo)
+                              .addOrUpdate(_todo)
                               .then((_) => Navigator.of(context).pop());
                         }
                       }

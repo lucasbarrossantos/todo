@@ -46,11 +46,18 @@ mixin _$TodoService on _TodoService, Store {
     return _$findAllAsyncAction.run(() => super.findAll());
   }
 
-  final _$addAsyncAction = AsyncAction('_TodoService.add');
+  final _$addOrUpdateAsyncAction = AsyncAction('_TodoService.addOrUpdate');
 
   @override
-  Future<void> add(Todo todo) {
-    return _$addAsyncAction.run(() => super.add(todo));
+  Future<void> addOrUpdate(Todo todo) {
+    return _$addOrUpdateAsyncAction.run(() => super.addOrUpdate(todo));
+  }
+
+  final _$_updateAsyncAction = AsyncAction('_TodoService._update');
+
+  @override
+  Future<void> _update(Todo todo) {
+    return _$_updateAsyncAction.run(() => super._update(todo));
   }
 
   final _$_TodoServiceActionController = ActionController(name: '_TodoService');

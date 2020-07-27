@@ -11,4 +11,8 @@ class TodoRepository {
   Future<Todo> add(Todo todo) async {
     return await _api.add(todo);
   }
+
+  Future<Todo> update(Todo todo) async {
+    return await _api.update(todo);
+  }
 }
