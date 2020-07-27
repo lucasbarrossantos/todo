@@ -60,6 +60,13 @@ mixin _$TodoService on _TodoService, Store {
     return _$_updateAsyncAction.run(() => super._update(todo));
   }
 
+  final _$deleteAsyncAction = AsyncAction('_TodoService.delete');
+
+  @override
+  Future<void> delete(String todoId) {
+    return _$deleteAsyncAction.run(() => super.delete(todoId));
+  }
+
   final _$_TodoServiceActionController = ActionController(name: '_TodoService');
 
   @override

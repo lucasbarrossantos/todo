@@ -54,5 +54,16 @@ abstract class _TodoService with Store {
   }
 
   @action
+  Future<void> delete(String todoId) async {
+    print('item deleted!!');
+   var response = await _todoRepository.delete(todoId);
+   print(response);
+    items.removeWhere((item) => item.id == todoId);
+    items = List.from(items);
+    items.sort((a, b) => a.id.compareTo(b.id));
+    setEditing();
+  }
+
+  @action
   void setEditing() => isEditing = !isEditing;
 }

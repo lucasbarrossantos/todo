@@ -15,4 +15,8 @@ class TodoRepository {
   Future<Todo> update(Todo todo) async {
     return await _api.update(todo);
   }
+
+  Future<dynamic> delete(String todoId) async {
+    return await _api.deleteId(todoId);
+  }
 }

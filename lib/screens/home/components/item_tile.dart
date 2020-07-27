@@ -4,7 +4,7 @@ import 'package:todo_everis/screens/home/components/modal_add_or_edit.dart';
 
 class ItemTile extends StatelessWidget {
   final Todo todo;
-  final ModalAddOrEdit modalAddOrEdit = ModalAddOrEdit();
+  final ModalAddOrEdit modal = ModalAddOrEdit();
 
   ItemTile(this.todo);
 
@@ -12,7 +12,10 @@ class ItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        modalAddOrEdit.addOrEditItem(context: context, todo: todo);
+        modal.addOrEditItem(context: context, todo: todo);
+      },
+      onLongPress: () {
+        modal.removeItem(context: context, todo: todo);
       },
       child: Card(
         elevation: 3.5,

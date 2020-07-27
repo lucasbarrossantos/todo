@@ -19,4 +19,9 @@ class Api {
     Response response = await dio.put('$_url/task/${todo.id}', data: todo.toJson());
     return Todo.fromJson(response.data);
   }
+
+  Future<dynamic> deleteId(String todoId) async {
+    Response response = await dio.delete('$_url/task/$todoId');
+    return response.data;
+  }
 }
