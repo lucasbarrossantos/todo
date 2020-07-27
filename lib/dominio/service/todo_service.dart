@@ -23,7 +23,7 @@ abstract class _TodoService with Store {
   Future<void> findAll() async {
     items.clear();
     items = await _todoRepository.findAll();
-    items.sort((a, b) => a.id.compareTo(b.id));
+    sortList();
   }
 
   @action
@@ -39,7 +39,7 @@ abstract class _TodoService with Store {
     todo.createdAt = DateTime.now().toIso8601String();
     todo = await _todoRepository.add(todo);
     items = List.from(items..add(todo));
-    items.sort((a, b) => a.id.compareTo(b.id));
+    sortList();
     setEditing();
   }
 
@@ -49,7 +49,7 @@ abstract class _TodoService with Store {
     todo = await _todoRepository.update(todo);
     items.removeWhere((item) => item.id == todo.id);
     items = List.from(items..add(todo));
-    items.sort((a, b) => a.id.compareTo(b.id));
+    sortList();
     setEditing();
   }
 
@@ -60,10 +60,14 @@ abstract class _TodoService with Store {
    print(response);
     items.removeWhere((item) => item.id == todoId);
     items = List.from(items);
-    items.sort((a, b) => a.id.compareTo(b.id));
+    sortList();
     setEditing();
   }
 
   @action
   void setEditing() => isEditing = !isEditing;
+
+  void sortList() {
+    items.sort((a, b) => a.id.compareTo(b.id));
+  }
 }
