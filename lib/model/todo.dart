@@ -26,13 +26,4 @@ class Todo {
   String toString() {
     return 'Todo{id: $id, createdAt: $createdAt, description: $description, title: $title}';
   }
-
-  @override
-  bool operator ==(other) {
-    return (other is Todo) && hashCode == other.hashCode;
-  }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^ createdAt.hashCode ^ description.hashCode ^ title.hashCode;
 }

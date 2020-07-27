@@ -4,17 +4,16 @@ import 'package:todo_everis/screens/home/home_screen.dart';
 import 'package:todo_everis/service/todo_service.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(TodoMain());
 }
 
-class MyApp extends StatelessWidget {
+class TodoMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         Provider<TodoService>(
-          create: (_) => TodoService(),
-          lazy: false,
+          create: (_) => TodoService()
         )
       ],
       child: MaterialApp(

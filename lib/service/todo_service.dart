@@ -11,6 +11,9 @@ abstract class _TodoService with Store {
 
   final TodoRepository _todoRepository = TodoRepository();
 
+  @observable
+  bool isEditing = false;
+
   _TodoService() {
     findAll();
   }
@@ -29,6 +32,10 @@ abstract class _TodoService with Store {
     todo.createdAt = DateTime.now().toIso8601String();
     todo = await _todoRepository.add(todo);
     items = List.from(items..add(todo));
+    setEditing();
   }
+
+  @action
+  void setEditing() => isEditing = !isEditing;
 
 }

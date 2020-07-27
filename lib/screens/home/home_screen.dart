@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _todoService = Provider.of<TodoService>(context, listen: false);
+    final _todoService = Provider.of<TodoService>(context);
 
     return Scaffold(
         appBar: AppBar(
