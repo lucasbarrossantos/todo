@@ -17,7 +17,7 @@ class TodoMain extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'TodoList',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.green,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: HomeScreen(),

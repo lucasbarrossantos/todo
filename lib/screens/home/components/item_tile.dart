@@ -36,7 +36,7 @@ class ItemTile extends StatelessWidget {
               SizedBox(height: 10),
               Text(
                 todo.createdAt,
-                style: TextStyle(fontWeight: FontWeight.w200, fontSize: 16),
+                style: TextStyle(fontWeight: FontWeight.w300, fontSize: 16),
               ),
             ],
           ),

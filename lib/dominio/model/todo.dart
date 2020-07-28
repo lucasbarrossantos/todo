@@ -1,3 +1,5 @@
+import 'package:date_format/date_format.dart';
+
 class Todo {
   String id;
   String createdAt;
@@ -8,7 +10,8 @@ class Todo {
 
   Todo.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    createdAt = json['createdAt'] ?? '';
+    createdAt = formatDate(DateTime.parse(json['createdAt']),
+        [dd, '/', mm, '/', yyyy, '  ', HH, ':', nn, ':', ss]) ?? '';
     description = json['description'] ?? '';
     title = json['title'] ?? '';
   }
