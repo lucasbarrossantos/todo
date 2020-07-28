@@ -17,7 +17,7 @@ abstract class _TodoService with Store {
   }
 
   @observable
-  List<Todo> items = [];
+  ObservableList<Todo> items = ObservableList<Todo>();
 
   @action
   Future<void> findAll() async {
@@ -38,7 +38,8 @@ abstract class _TodoService with Store {
   Future _add(Todo todo) async {
     todo.createdAt = DateTime.now().toIso8601String();
     todo = await _todoRepository.add(todo);
-    items = List.from(items..add(todo));
+    //items = List.from(items..add(todo));
+    items.add(todo);
     sortList();
     setEditing();
   }
@@ -58,7 +59,7 @@ abstract class _TodoService with Store {
     print('item deleted!!');
     var response = await _todoRepository.delete(todoId);
     items.removeWhere((item) => item.id == todoId);
-    items = List.from(items);
+    //items = List.from(items);
     sortList();
     setEditing();
   }

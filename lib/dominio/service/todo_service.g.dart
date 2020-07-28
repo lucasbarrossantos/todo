@@ -27,13 +27,13 @@ mixin _$TodoService on _TodoService, Store {
   final _$itemsAtom = Atom(name: '_TodoService.items');
 
   @override
-  List<Todo> get items {
+  ObservableList<Todo> get items {
     _$itemsAtom.reportRead();
     return super.items;
   }
 
   @override
-  set items(List<Todo> value) {
+  set items(ObservableList<Todo> value) {
     _$itemsAtom.reportWrite(value, super.items, () {
       super.items = value;
     });
