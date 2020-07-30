@@ -16,7 +16,9 @@ class ModalAddOrEdit {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Nova tarefa'),
+          title: todo.isNew
+              ? Text('Nova tarefa')
+              : Text('Edição da tareafa: \'${todo.title}\' '),
           content: SingleChildScrollView(
             child: Observer(
               builder: (_) => Form(
@@ -135,12 +137,14 @@ class ModalAddOrEdit {
             Observer(
                 builder: (_) => RaisedButton(
                       child: Text('Excluir'),
-                      onPressed: !_todoService.isEditing ? () {
-                        _todoService.setEditing();
-                        _todoService
-                            .delete(todo.id)
-                            .then((value) => Navigator.of(context).pop());
-                      } : null,
+                      onPressed: !_todoService.isEditing
+                          ? () {
+                              _todoService.setEditing();
+                              _todoService
+                                  .delete(todo.id)
+                                  .then((value) => Navigator.of(context).pop());
+                            }
+                          : null,
                       color: Colors.red[400],
                       disabledColor: Colors.red.withAlpha(140),
                     ))

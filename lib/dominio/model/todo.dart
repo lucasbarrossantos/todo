@@ -29,4 +29,6 @@ class Todo {
   String toString() {
     return 'Todo{id: $id, createdAt: $createdAt, description: $description, title: $title}';
   }
+
+  bool get isNew => id == null;
 }
