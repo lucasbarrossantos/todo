@@ -17,7 +17,7 @@ class ModalAddOrEdit {
       builder: (BuildContext context) {
         return AlertDialog(
           title: todo.isNew
-              ? Text('Nova tarefa')
+              ? const Text('Nova tarefa')
               : Text('Edição da tareafa: \'${todo.title}\' '),
           content: SingleChildScrollView(
             child: Observer(
@@ -67,7 +67,7 @@ class ModalAddOrEdit {
           ),
           actions: <Widget>[
             RaisedButton(
-              child: Text('Cancelar'),
+              child: const Text('Cancelar'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -75,7 +75,7 @@ class ModalAddOrEdit {
             ),
             Observer(
               builder: (_) => RaisedButton(
-                child: Text('Salvar'),
+                child: const Text('Salvar'),
                 onPressed: !_todoService.isEditing
                     ? () async {
                         if (formKey.currentState.validate()) {
@@ -111,7 +111,7 @@ class ModalAddOrEdit {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Remover tarefa'),
+          title: const Text('Remover tarefa'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -119,8 +119,8 @@ class ModalAddOrEdit {
                 'Deseja realmente excluir o item id: \'${todo.id}\' ?',
                 overflow: TextOverflow.ellipsis,
               ),
-              SizedBox(height: 18),
-              Text(
+              const SizedBox(height: 18),
+              const Text(
                 'A ação não pode ser desfeita!',
                 overflow: TextOverflow.clip,
               ),
@@ -128,7 +128,7 @@ class ModalAddOrEdit {
           ),
           actions: <Widget>[
             RaisedButton(
-              child: Text('Cancelar'),
+              child: const Text('Cancelar'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -136,7 +136,7 @@ class ModalAddOrEdit {
             ),
             Observer(
                 builder: (_) => RaisedButton(
-                      child: Text('Excluir'),
+                      child: const Text('Excluir'),
                       onPressed: !_todoService.isEditing
                           ? () {
                               _todoService.setEditing();
