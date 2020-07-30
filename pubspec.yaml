@@ -33,6 +33,7 @@ dependencies:
   flutter_mobx: ^1.1.0+1
   provider: ^4.3.1
   date_format: ^1.0.8
+  random_color: ^1.0.5
 
 dev_dependencies:
   flutter_test:

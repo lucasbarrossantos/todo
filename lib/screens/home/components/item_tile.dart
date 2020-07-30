@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:random_color/random_color.dart';
 import 'package:todo_everis/dominio/model/todo.dart';
 import 'package:todo_everis/screens/home/components/modal_add_or_edit.dart';
 
@@ -20,6 +23,11 @@ class ItemTile extends StatelessWidget {
       child: Card(
         elevation: 3.5,
         child: Container(
+          color: RandomColor()
+              .randomColor(
+                  colorHue: ColorHue.multiple(
+                      colorHues: [ColorHue.blue, ColorHue.red, ColorHue.green]))
+              .withAlpha(220),
           height: 100,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
