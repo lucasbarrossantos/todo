@@ -14,7 +14,6 @@ class HomeScreen extends StatelessWidget {
     final _todoService = Provider.of<TodoService>(context);
 
     return Scaffold(
-      backgroundColor: Colors.grey[300],
         appBar: AppBar(
           title: const Text('Todo'),
           centerTitle: true,
