@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:random_color/random_color.dart';
 import 'package:todo_everis/dominio/model/todo.dart';
@@ -21,13 +19,16 @@ class ItemTile extends StatelessWidget {
         modal.removeItem(context: context, todo: todo);
       },
       child: Card(
+        color: RandomColor()
+            .randomColor(
+                colorHue: ColorHue.multiple(
+                    colorHues: [ColorHue.blue, ColorHue.red, ColorHue.green]))
+            .withAlpha(190),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
         elevation: 3.5,
         child: Container(
-          color: RandomColor()
-              .randomColor(
-                  colorHue: ColorHue.multiple(
-                      colorHues: [ColorHue.blue, ColorHue.red, ColorHue.green]))
-              .withAlpha(220),
           height: 100,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

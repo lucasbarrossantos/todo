@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
     final _todoService = Provider.of<TodoService>(context);
 
     return Scaffold(
+      backgroundColor: Colors.grey[300],
         appBar: AppBar(
           title: const Text('Todo'),
           centerTitle: true,
@@ -29,6 +30,7 @@ class HomeScreen extends StatelessWidget {
         body: Observer(
           builder: (_) {
             return ListView.builder(
+              padding: const EdgeInsets.all(6),
               itemCount: _todoService.items.length,
               itemBuilder: (_, index) => ItemTile(_todoService.items[index]));
           },
