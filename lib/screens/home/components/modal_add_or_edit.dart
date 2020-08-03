@@ -18,7 +18,7 @@ class ModalAddOrEdit {
         return AlertDialog(
           title: todo.isNew
               ? const Text('Nova tarefa')
-              : Text('Edição da tareafa: \'${todo.title}\' '),
+              : Text('Edição da tarefa: \'${todo.title}\' '),
           content: SingleChildScrollView(
             child: Observer(
               builder: (_) => Form(

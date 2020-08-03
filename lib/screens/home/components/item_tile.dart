@@ -19,16 +19,26 @@ class ItemTile extends StatelessWidget {
         modal.removeItem(context: context, todo: todo);
       },
       child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12)
+        ),
         color: RandomColor()
             .randomColor(
-                colorHue: ColorHue.multiple(
-                    colorHues: [ColorHue.blue, ColorHue.red, ColorHue.green]))
+            colorHue: ColorHue.multiple(
+                colorHues: [ColorHue.blue, ColorHue.red, ColorHue.green]))
             .withAlpha(190),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
         elevation: 3.5,
         child: Container(
+          margin: const EdgeInsets.only(left: 12),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.zero,
+              topRight: Radius.circular(12),
+              bottomLeft: Radius.zero,
+              bottomRight: Radius.circular(12),
+            ),
+          ),
           height: 100,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
